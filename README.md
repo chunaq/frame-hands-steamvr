@@ -12,7 +12,8 @@ games that support hand tracking. No controllers needed.
   thumb short of a finger you're touching. Frame Hands bends the avatar's thumb until its tips meet
   too, for all four fingers, and lets go smoothly when you open your hand.
 - **Gestures as buttons.** Thumb + index pinch = trigger, fist = grip, thumb + middle pinch = B,
-  from Frametop's own detection.
+  from Frametop's own detection. In VRChat, B isn't bound to anything (VRChat's own hand gestures
+  open its menu); bind it in SteamVR's controller bindings if you want it to do something.
 - **Hands stay hands.** The tracked hands keep both hand slots, so games don't switch to the Frame
   controllers or show a controller in your hand.
 - **Steady in the room.** Hands are placed with your head pose from the moment the cameras saw them,

@@ -36,7 +36,7 @@ thumb is bent (and the finger comes part of the way) until its tips meet too.
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `gestures` | `1` | Thumb + index pinch = trigger, fist = grip, thumb + middle pinch = B. `0` = off. |
+| `gestures` | `1` | Thumb + index pinch = trigger, fist = grip, thumb + middle pinch = B (not bound in VRChat: its own hand gestures open the menu). `0` = off. |
 | `ft_gestures` | `1` | Use Frametop's own pinch, middle pinch and fist detection (Frametop 0.3.0+, trained on those touches). `0` = the driver's own checks. |
 
 ## Hand position and smoothing

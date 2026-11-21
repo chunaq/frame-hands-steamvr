@@ -54,15 +54,6 @@
                 {
                     "inputs": {
                         "click": {
-                            "output": "/actions/global/in/quick_menu"
-                        }
-                    },
-                    "mode": "button",
-                    "path": "/user/hand/left/input/b"
-                },
-                {
-                    "inputs": {
-                        "click": {
                             "output": "/actions/global/in/interact"
                         },
                         "pull": {
@@ -83,15 +74,6 @@
                     },
                     "mode": "trigger",
                     "path": "/user/hand/right/input/grip"
-                },
-                {
-                    "inputs": {
-                        "click": {
-                            "output": "/actions/global/in/quick_menu"
-                        }
-                    },
-                    "mode": "button",
-                    "path": "/user/hand/right/input/b"
                 }
             ]
         }

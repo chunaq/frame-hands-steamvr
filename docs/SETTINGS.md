@@ -1,7 +1,7 @@
 # Settings
 
 All settings are in `calibration.json` in the driver's folder:
-`%LOCALAPPDATA%\FrameHands\framehands\resources\settings\calibration.json`.
+`%USERPROFILE%\FrameHands\framehands\resources\settings\calibration.json`.
 
 Edit it while you play: changes apply within a second, no restart needed. Updating Frame Hands
 keeps your file (the new version's defaults are saved next to it as `calibration.default.json`).

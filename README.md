@@ -41,7 +41,7 @@ Frame Hands is an independent project, not made by or affiliated with Frametop, 
 
 Nothing else to install: no Python, no runtime, no program running in the background on the PC.
 
-It installs the driver to `%LOCALAPPDATA%\FrameHands` and registers it with SteamVR.
+It installs the driver to `%USERPROFILE%\FrameHands` and registers it with SteamVR.
 
 ### 2. On the Steam Frame
 
@@ -96,7 +96,7 @@ VRChat's own hand gestures open its menu.
 
 ## Settings
 
-Everything is in `%LOCALAPPDATA%\FrameHands\framehands\resources\settings\calibration.json`, and
+Everything is in `%USERPROFILE%\FrameHands\framehands\resources\settings\calibration.json`, and
 changes apply while you play. See [docs/SETTINGS.md](docs/SETTINGS.md).
 
 ## Is it working?

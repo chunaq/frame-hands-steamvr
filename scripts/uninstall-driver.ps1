@@ -5,11 +5,19 @@
 param([switch]$KeepFiles)
 $ErrorActionPreference = "Stop"
 if (Get-Process vrserver, vrmonitor -ErrorAction SilentlyContinue) { throw "Close SteamVR first." }
-$target = Join-Path $env:LOCALAPPDATA "FrameHands\framehands"
+$target = Join-Path $env:USERPROFILE "FrameHands\framehands"
 $steam = (Get-ItemProperty "HKCU:\Software\Valve\Steam" -ErrorAction SilentlyContinue).SteamPath
 $vrpathreg = Get-ChildItem -Path @("$steam\steamapps\common\SteamVR\bin\win64", "${env:ProgramFiles(x86)}\Steam\steamapps\common\SteamVR\bin\win64") `
     -Filter vrpathreg.exe -ErrorAction SilentlyContinue | Select-Object -First 1
-if ($vrpathreg) { & $vrpathreg.FullName removedriver $target; Write-Host "Unregistered from SteamVR" }
+if ($vrpathreg) {
+    # Every place Frame Hands is registered (this install, older ones, build folders).
+    foreach ($line in (& $vrpathreg.FullName show)) {
+        if ($line -match '^\s*framehands\s*:\s*(.+?)\s*$') {
+            & $vrpathreg.FullName removedriver $Matches[1]
+            Write-Host "Unregistered from SteamVR: $($Matches[1])"
+        }
+    }
+}
 if (-not $KeepFiles -and (Test-Path $target)) { Remove-Item (Split-Path $target) -Recurse -Force; Write-Host "Removed $target" }
 $rule = Get-NetFirewallRule -DisplayName "Frame Hands (SteamVR hand tracking, UDP 39877)" -ErrorAction SilentlyContinue
 if ($rule) {

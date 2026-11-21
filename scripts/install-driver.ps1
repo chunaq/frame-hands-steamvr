@@ -3,7 +3,7 @@
   Installs (or updates) the Frame Hands SteamVR driver.
 
 .DESCRIPTION
-  Copies the driver to %LOCALAPPDATA%\FrameHands\framehands, registers it with SteamVR
+  Copies the driver to %USERPROFILE%\FrameHands\framehands, registers it with SteamVR
   (vrpathreg), and offers to allow its UDP port (39877) through Windows Firewall so the headset's
   hand data can reach it. On an update your settings (calibration.json) are kept.
   Close SteamVR first.
@@ -71,14 +71,34 @@ function Find-VrPathReg {
 $vrpathreg = Find-VrPathReg
 if (-not $vrpathreg) { throw "SteamVR not found. Install SteamVR from Steam and start it once." }
 
-$target = Join-Path $env:LOCALAPPDATA "FrameHands\framehands"
+# Not under AppData: SteamVR skips external drivers there ("not a directory"). Not in Documents
+# either, which OneDrive often takes over.
+$target = Join-Path $env:USERPROFILE "FrameHands\framehands"
 $settings = Join-Path $target "resources\settings"
+
+# Other places Frame Hands is registered (an older version's folder, a build folder): unregister
+# them, and bring their settings along if this is the first install here.
+$others = @()
+foreach ($line in (& $vrpathreg show)) {
+    if ($line -match '^\s*framehands\s*:\s*(.+?)\s*$' -and $Matches[1] -ne $target) { $others += $Matches[1] }
+}
+$oldAppData = Join-Path $env:LOCALAPPDATA "FrameHands\framehands"
+if ((Test-Path $oldAppData) -and $others -notcontains $oldAppData) { $others += $oldAppData }
+
 $keep = @{}
-if (Test-Path $settings) {
-    foreach ($f in Get-ChildItem $settings -Filter *.json) {
+foreach ($dir in @($target) + $others) {
+    $s = Join-Path $dir "resources\settings"
+    if ($keep.Count -or -not (Test-Path $s)) { continue }
+    foreach ($f in Get-ChildItem $s -Filter *.json) {
         if ($f.Name -eq "calibration.json" -or $f.Name -like "curl_range_*.json") { $keep[$f.Name] = [IO.File]::ReadAllBytes($f.FullName) }
     }
+    if ($keep.Count -and $dir -ne $target) { Write-Host "Taking your settings from $dir" }
 }
+foreach ($dir in $others) {
+    & $vrpathreg removedriver $dir | Out-Null
+    Write-Host "Unregistered the old location: $dir"
+}
+if (Test-Path $oldAppData) { Remove-Item (Split-Path $oldAppData) -Recurse -Force }
 if ((Resolve-Path $DriverDir).Path -ne $target) {
     if (Test-Path $target) { Remove-Item $target -Recurse -Force }
     New-Item -ItemType Directory -Force (Split-Path $target) | Out-Null

@@ -1,0 +1,104 @@
+{
+    "jsonid": "input_profile",
+    "controller_type": "framehands_hand",
+    "input_bindingui_mode": "controller_handed",
+    "input_bindingui_left": {
+        "image": "{framehands}/icons/sample_controller.svg"
+    },
+    "input_bindingui_right": {
+        "image": "{framehands}/icons/sample_controller.svg"
+    },
+    "input_source": {
+        "/input/finger/index": {
+            "type": "trigger",
+            "visibility": "InputValueVisibility_AvailableButHidden",
+            "binding_image_point": [
+                56,
+                86
+            ],
+            "order": 100
+        },
+        "/input/finger/middle": {
+            "type": "trigger",
+            "visibility": "InputValueVisibility_AvailableButHidden",
+            "binding_image_point": [
+                56,
+                86
+            ],
+            "order": 101
+        },
+        "/input/finger/ring": {
+            "type": "trigger",
+            "visibility": "InputValueVisibility_AvailableButHidden",
+            "binding_image_point": [
+                56,
+                86
+            ],
+            "order": 102
+        },
+        "/input/finger/pinky": {
+            "type": "trigger",
+            "visibility": "InputValueVisibility_AvailableButHidden",
+            "binding_image_point": [
+                56,
+                86
+            ],
+            "order": 103
+        },
+        "/input/skeleton/left": {
+            "type": "skeleton",
+            "skeleton": "/skeleton/hand/left",
+            "side": "left",
+            "binding_image_point": [
+                5,
+                35
+            ]
+        },
+        "/input/skeleton/right": {
+            "type": "skeleton",
+            "skeleton": "/skeleton/hand/right",
+            "side": "right",
+            "binding_image_point": [
+                5,
+                35
+            ]
+        },
+        "/pose/raw": {
+            "type": "pose",
+            "binding_image_point": [
+                5,
+                15
+            ]
+        },
+        "/input/trigger": {
+            "type": "trigger",
+            "binding_image_point": [
+                56,
+                86
+            ],
+            "order": 1
+        },
+        "/input/grip": {
+            "type": "trigger",
+            "binding_image_point": [
+                30,
+                100
+            ],
+            "order": 2
+        },
+        "/input/b": {
+            "type": "button",
+            "binding_image_point": [
+                30,
+                60
+            ],
+            "order": 3
+        }
+    },
+    "default_bindings": [
+        {
+            "app_key": "steam.app.438100",
+            "binding_url": "default_bindings/steam.app.438100_framehands_hand.json"
+        }
+    ]
+}

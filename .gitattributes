@@ -1,0 +1,9 @@
+* text=auto
+# Run on the Steam Frame (Linux): always LF, even in a Windows checkout or build.
+*.sh text eol=lf
+*.py text eol=lf
+headset/** text eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.gif binary
+*.dll binary

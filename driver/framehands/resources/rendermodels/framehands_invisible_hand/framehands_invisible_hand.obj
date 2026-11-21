@@ -1,0 +1,11 @@
+# Near-invisible placeholder so SteamVR doesn't draw its fallback controller.
+mtllib framehands_invisible_hand.mtl
+v 0.0 0.0 0.0
+v 0.0001 0.0 0.0
+v 0.0 0.0001 0.0
+vt 0.0 0.0
+vt 1.0 0.0
+vt 0.0 1.0
+vn 0.0 0.0 1.0
+usemtl invisible
+f 1/1/1 2/2/1 3/3/1

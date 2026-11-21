@@ -1,0 +1,8 @@
+{
+	"alwaysActivate": true,
+	"name" : "framehands",
+	"directory" : "",
+	"resourceOnly" : false,
+
+	"hmd_presence" : []
+}

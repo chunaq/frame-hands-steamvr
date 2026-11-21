@@ -1,0 +1,9 @@
+/build/
+/dist/
+/third_party/
+__pycache__/
+*.pyc
+# Recordings of your hands (tools/ft_record.py): keep them out of the repo
+ft_record*.txt
+*.csv
+.vs/

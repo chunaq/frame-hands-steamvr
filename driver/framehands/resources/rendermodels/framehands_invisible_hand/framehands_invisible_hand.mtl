@@ -1,0 +1,5 @@
+newmtl invisible
+Ka 0 0 0
+Kd 0 0 0
+d 0.0
+map_Kd framehands_invisible_hand.png

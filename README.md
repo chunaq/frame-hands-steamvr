@@ -45,6 +45,10 @@ It installs the driver to `%USERPROFILE%\FrameHands` and registers it with Steam
 
 ### 2. On the Steam Frame
 
+> **Coming to Frametop:** with the Frametop maintainer's OK, the headset part of Frame Hands is
+> being contributed to Frametop itself, as an optional setting. Once a Frametop release includes
+> it, you'll just turn that setting on instead of running the commands below. Until then, use them.
+
 In Desktop Mode, open a terminal (or SSH in) and run:
 
 ```sh

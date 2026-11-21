@@ -36,8 +36,10 @@ Frame Hands is an independent project, not made by or affiliated with Frametop, 
 
 1. Download `FrameHands-windows.zip` from the [latest release](../../releases/latest) and unzip it.
 2. Close SteamVR.
-3. In the unzipped folder, right-click `install-driver.ps1` → **Run with PowerShell**. Say yes when
-   it asks to allow the hand data through Windows Firewall.
+3. In the unzipped folder, double-click **`install.cmd`**. Say yes when it asks to allow the hand
+   data through Windows Firewall.
+
+Nothing else to install: no Python, no runtime, no program running in the background on the PC.
 
 It installs the driver to `%LOCALAPPDATA%\FrameHands` and registers it with SteamVR.
 
@@ -47,7 +49,7 @@ In Desktop Mode, open a terminal (or SSH in) and run:
 
 ```sh
 cd ~/Downloads
-curl -LO https://github.com/<owner>/frame-hands-steamvr/releases/latest/download/frame-hands-headset.tar.gz
+curl -LO https://github.com/chunaq/frame-hands-steamvr/releases/latest/download/frame-hands-headset.tar.gz
 tar xzf frame-hands-headset.tar.gz
 sh frame-hands-headset/install.sh
 ```
@@ -67,6 +69,31 @@ It finds your PC by itself. If it can't (some networks block broadcasts), tell i
 Start SteamVR on the PC as usual, put the controllers down, and hold your hands up. In VRChat,
 your hands and fingers follow yours; pinch to click.
 
+## Which games?
+
+- **VRChat:** the full experience (it's what Frame Hands is tuned for), with button bindings
+  included.
+- **Other SteamVR games with hand or finger tracking** (games that use SteamVR's skeletal input,
+  or OpenXR hand tracking through SteamVR): your hands and fingers show and move the same way.
+- **Games made only for controllers:** you get hands with a trigger (pinch), grip (fist) and B
+  (thumb + middle pinch), but no thumbstick or other buttons, so moving around usually needs
+  controllers. Pick up the controllers and set `share_with_controllers` to `1` to switch between
+  them (see SETTINGS.md).
+
+## Change what the gestures do
+
+The gestures are buttons on a controller called **Frame Hands**, so you can remap them per game in
+SteamVR, like any controller:
+
+1. In SteamVR: **Settings → Controllers → Manage Controller Bindings** (or **Show old Binding UI**).
+2. Pick the game, choose **Custom**, then **Edit This Binding**, with **Frame Hands** as the
+   controller.
+3. Bind **Trigger** (thumb + index pinch), **Grip** (fist) or **B** (thumb + middle pinch) to
+   whatever the game offers.
+
+VRChat comes with a binding: pinch = interact/use, fist = grab. B isn't bound there, because
+VRChat's own hand gestures open its menu.
+
 ## Settings
 
 Everything is in `%LOCALAPPDATA%\FrameHands\framehands\resources\settings\calibration.json`, and
@@ -84,6 +111,7 @@ changes apply while you play. See [docs/SETTINGS.md](docs/SETTINGS.md).
 
 | Problem | Fix |
 | --- | --- |
+| `install.cmd` says SteamVR is running | Close SteamVR (and VRChat) completely, then run it again. |
 | No hands in SteamVR | Is hand tracking on in Frametop? Is `frame-hands-exporter` running on the headset (above)? Run `install-driver.ps1 -FirewallOnly` as admin on the PC. On networks without broadcasts, install with `--pc <your PC's IP>`. |
 | Your hand turns into a controller when you close it | Frametop's pointer took the hand: set `POINTER_HANDS=0` and `HANDS_NEAR=0` in `~/.config/frametop.conf` (the installer does) and restart the Frame. |
 | Hand tracking stops when a game starts | Set `"pause_auto": false` in `~/.config/frametop-input.json` (Frametop Input Settings → Game optimization). |
@@ -94,7 +122,7 @@ changes apply while you play. See [docs/SETTINGS.md](docs/SETTINGS.md).
 
 ## Uninstall
 
-- PC: `uninstall-driver.ps1` (close SteamVR first).
+- PC: double-click `uninstall.cmd` (close SteamVR first).
 - Headset: `sh ~/.local/share/frame-hands/uninstall.sh`. Frametop's previous settings are in
   `~/.config/frametop.conf.frame-hands-backup` and `~/.config/frametop-input.json.frame-hands-backup`.
 

@@ -7,3 +7,4 @@ headset/** text eol=lf
 *.png binary
 *.gif binary
 *.dll binary
+*.cmd text eol=crlf

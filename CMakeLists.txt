@@ -9,6 +9,8 @@ if(NOT EXISTS "${OPENVR_DIR}/headers/openvr_driver.h")
                         "https://github.com/ValveSoftware/openvr (tag v2.15.6) there.")
 endif()
 
+# The C++ runtime built in (/MT): the driver runs on PCs without the Visual C++ redistributable.
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(OPENVR_INCLUDE_DIR "${OPENVR_DIR}/headers")

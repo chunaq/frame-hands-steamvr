@@ -1,4 +1,4 @@
-/build/
+/build*/
 /dist/
 /third_party/
 __pycache__/

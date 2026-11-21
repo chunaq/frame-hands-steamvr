@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+  <!-- Frame Hands: a simple open hand for SteamVR's binding screen -->
+  <g fill="#e8eef5" stroke="#5b7a99" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M38 132 C26 118 18 100 14 86 C11 76 22 72 28 80 L36 92
+             L36 34 C36 26 46 26 46 34 L46 70
+             L48 22 C48 14 58 14 58 22 L58 70
+             L62 26 C62 18 72 18 72 26 L70 72
+             L76 40 C77 32 86 33 85 41 L80 92
+             C78 110 74 124 70 132 Z"/>
+  </g>
+</svg>

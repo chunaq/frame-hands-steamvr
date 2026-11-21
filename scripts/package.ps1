@@ -17,7 +17,9 @@ if (Test-Path $dist) { Remove-Item $dist -Recurse -Force }
 $pc = Join-Path $dist "FrameHands-$version"
 New-Item -ItemType Directory -Force $pc, (Join-Path $pc "docs") | Out-Null
 Copy-Item $driver (Join-Path $pc "framehands") -Recurse
-Copy-Item (Join-Path $root "scripts\install-driver.ps1"), (Join-Path $root "scripts\uninstall-driver.ps1") $pc
+foreach ($f in "install.cmd", "uninstall.cmd", "install-driver.ps1", "uninstall-driver.ps1") {
+    Copy-Item (Join-Path $root "scripts\$f") $pc
+}
 Copy-Item (Join-Path $root "README.md"), (Join-Path $root "LICENSE"), (Join-Path $root "THIRD_PARTY_NOTICES.md") $pc
 Copy-Item (Join-Path $root "docs\*.md") (Join-Path $pc "docs")
 Compress-Archive -Path $pc -DestinationPath (Join-Path $dist "FrameHands-windows.zip")
